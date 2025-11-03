@@ -68,16 +68,25 @@
 </head>
 <body>
 
-<audio id="bgMusic" autoplay loop muted>
-  <source src="06 Ishq Bulaava.mp3" type="audio/mpeg">
+<button id="playBtn">🎵 Tap to Play “Ishq Bulaava” 🎵</button>
+
+<audio id="bgMusic" loop>
+<source src="06 Ishq Bulaava.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  const music = document.getElementById("bgMusic");
-  setTimeout(() => {
-    music.muted = false;
-    music.volume = 0.5; 
-  }, 2000);
+const btn = document.getElementById("playBtn");
+const music = document.getElementById("bgMusic");
+
+btn.addEventListener("click", () => {
+    music.play()
+    .then(() => {
+        btn.style.display = "none"; // Hide button after play starts
+    })
+    .catch(err => {
+        console.log("Autoplay blocked:", err);
+    });
+});
 </script>
 
     
@@ -104,6 +113,7 @@
 
 </body>
 </html>
+
 
 
 
